@@ -26,6 +26,8 @@ import BreastedSuit from "./suits/BreastedSuit";
 import CottonTwill from "./suits/CottonTwill";
 import DoubleColor from "./suits/DoubleColor";
 import Footer from "./components/Footer";
+import Wishlist from "./pages/Wishlist";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -52,6 +54,8 @@ function App() {
           <Route path="/custom-made" element={<CustomMade />} />
           <Route path="/breathable-suits" element={<BreathableSuit />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/cart" element={<Cart />} />
 
           <Route
             path="/fabulous-suits/party-wear-blazer"

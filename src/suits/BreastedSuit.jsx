@@ -3,9 +3,14 @@ import Nav from "../components/Nav";
 import { Link } from "react-router";
 import { Minus, Plus } from "lucide-react";
 import Footer from "../components/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { addToWishlist } from "../redux/wishlistSlice";
+import { addToCart } from "../redux/cartSlice";
 
 function BreastedSuit() {
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+  const wishlist = useSelector((state) => state.wishlist.wishlist);
 
   const increaseQuantity = () => setQuantity(quantity + 1);
   const decreaseQuantity = () => quantity > 1 && setQuantity(quantity - 1);
@@ -42,6 +47,21 @@ function BreastedSuit() {
       link: "tweed-formal-blazer",
     },
   ];
+
+  const product = {
+    id: "double-breasted-blazer",
+    title: "Double Breasted Blazer",
+    img: "/public/image4.webp",
+    price: "Rs 7000",
+  };
+  
+  const handleAddToWishlist = () => {
+    dispatch(addToWishlist(product));
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart({ ...product, quantity }));
+  };
 
   return (
     <>
@@ -125,10 +145,12 @@ function BreastedSuit() {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <button className="bg-orange-400 text-black font-semibold py-2 rounded-md">
+                <button  onClick={handleAddToCart} 
+                    className="bg-orange-400 text-black font-semibold py-2 rounded-md">
                   Add to Cart
                 </button>
-                <button className="bg-gray-700 text-white font-semibold py-2 rounded-md">
+                <button onClick={handleAddToWishlist} 
+                    className="bg-gray-700 text-white font-semibold py-2 rounded-md">
                   Add to Wishlist
                 </button>
               </div>
