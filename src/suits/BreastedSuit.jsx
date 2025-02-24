@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Nav from "../components/Nav";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { Minus, Plus } from "lucide-react";
 import Footer from "../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import { addToCart } from "../redux/cartSlice";
 function BreastedSuit() {
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const wishlist = useSelector((state) => state.wishlist.wishlist);
 
   const increaseQuantity = () => setQuantity(quantity + 1);
@@ -48,19 +49,24 @@ function BreastedSuit() {
     },
   ];
 
-  const product = {
-    id: "double-breasted-blazer",
-    title: "Double Breasted Blazer",
-    img: "/public/image4.webp",
-    price: "Rs 7000",
+  const basePrice = 7000; 
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        id: 1,
+        title: "Double-Breasted Suit",
+        img: "image4.webp",
+        price: basePrice * quantity,
+        quantity: quantity,
+      })
+    );
+    navigate("/cart");
   };
   
   const handleAddToWishlist = () => {
     dispatch(addToWishlist(product));
-  };
-
-  const handleAddToCart = () => {
-    dispatch(addToCart({ ...product, quantity }));
+    navigate("/wishlist");
   };
 
   return (
@@ -101,7 +107,7 @@ function BreastedSuit() {
 
             <div className="space-y-6">
               <h1 className="text-3xl font-bold">Double Breasted Blazer</h1>
-              <p className="text-2xl font-semibold text-orange-400">Rs 7000</p>
+              <p className="text-2xl font-semibold text-orange-400">Rs {basePrice.toFixed(2)}</p>
 
               <div className="text-yellow-400 text-lg">
                 ★★★☆☆ <span className="text-gray-400">(1 review)</span>
@@ -127,7 +133,7 @@ function BreastedSuit() {
               </div>
 
               <p className="text-lg">
-                Total: <span className="font-semibold">Rs 10000</span>
+                Total: <span className="font-semibold">Rs {basePrice.toFixed(2)}</span>
               </p>
               <p className="text-green-400 font-semibold">16 In stock!</p>
 

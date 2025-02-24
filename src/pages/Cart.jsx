@@ -12,9 +12,10 @@ const Cart = () => {
     dispatch(removeFromCart(id));
   };
 
-  const handleQuantityChange = (id, quantity) => {
-    if (quantity >= 1) {
-      dispatch(updateQuantity({ id, quantity }));
+  const handleQuantityChange = (id, newQuantity) => {
+    if (newQuantity >= 1) {
+      console.log(`Updating item ${id} to quantity:`, newQuantity); // Debugging
+      dispatch(updateQuantity({ id, quantity: newQuantity }));
     }
   };
 
@@ -62,12 +63,19 @@ const Cart = () => {
                   <div className="ml-4 flex-1">
                     <h3 className="text-lg font-semibold">{item.title}</h3>
                     <p className="text-[#a67c52] font-bold">
-                      ${(Number(item.price) || 0).toFixed(2)}
+                      Rs{" "}
+                      {Number(item.price)
+                        ? Number(item.price).toFixed(2)
+                        : "7000.00"}
                     </p>
 
                     <p className="text-gray-400 mt-2">
-                      Total: $
-                      {(Number(item.price) * item.quantity || 0).toFixed(2)}
+                      Total: Rs{" "}
+                      {Number(item.price) && Number(item.quantity)
+                        ? (Number(item.price) * Number(item.quantity)).toFixed(
+                            2
+                          )
+                        : "7000.00"}
                     </p>
                     <div className="flex items-center mt-2">
                       <button
@@ -89,10 +97,12 @@ const Cart = () => {
                       </button>
                     </div>
                     <p className="text-gray-400 mt-2">
-                      Total: $
-                      {item.price
-                        ? (item.price * item.quantity).toFixed(2)
-                        : "0.00"}
+                      Grand Total: Rs{" "}
+                      {Number(item.price) && Number(item.quantity)
+                        ? (Number(item.price) * Number(item.quantity)).toFixed(
+                            2
+                          )
+                        : "7000.00"}
                     </p>
                   </div>
                   <button
@@ -107,7 +117,7 @@ const Cart = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
