@@ -19,7 +19,28 @@ function Wishlist() {
 
   return (
     <div className="text-white min-h-screen">
-      <Nav />
+      <header
+        className="relative w-full h-80 bg-no-repeat bg-[length:100%_100%] bg-center"
+        style={{
+          backgroundImage:
+            "url('https://img.freepik.com/premium-photo/detailed-3d-illustration-men39s-fashion-display-with-business-attire-arranged-classic-wooden-hangers-showcased-clean-white-lighting_41097-18792.jpg')",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/10">
+          <Nav />
+          <div className="absolute mt-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+            <h2 className="text-4xl font-bold">Shopping Cart</h2>
+            <h1 className="mt-10">
+              <Link to="/">
+                <span className="hover:text-orange-300 cursor-pointer">
+                  Home
+                </span>
+              </Link>
+              / Best Selling - Home1
+            </h1>
+          </div>
+        </div>
+      </header>
       <div className="container mx-auto p-10">
         <h1 className="text-4xl font-bold text-center mb-6">Your Wishlist</h1>
 
@@ -28,7 +49,10 @@ function Wishlist() {
         ) : (
           <div className="space-y-6">
             {wishlist.map((item) => (
-              <div key={item.id} className="bg-gray-800 p-4 rounded-lg flex justify-between items-center">
+              <div
+                key={item.id}
+                className="bg-gray-800 p-4 rounded-lg flex justify-between items-center"
+              >
                 <div>
                   <h2 className="text-xl font-semibold">{item.name}</h2>
                   <p className="text-gray-400">Price: Rs {item.price}</p>
@@ -45,7 +69,10 @@ function Wishlist() {
         )}
 
         <div className="text-center mt-6">
-          <Link to="/" className="bg-orange-400 text-black px-6 py-3 rounded-md font-semibold">
+          <Link
+            to="/"
+            className="bg-orange-400 hover:bg-white text-white hover:text-black px-6 py-3 rounded-md font-semibold"
+          >
             Continue Shopping
           </Link>
         </div>

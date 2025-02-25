@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import { Link } from "react-router";
 import { Minus, Plus } from "lucide-react";
@@ -6,6 +6,8 @@ import Footer from "../components/Footer";
 
 function DoubleColor() {
   const [quantity, setQuantity] = useState(1);
+  const [cart, setCart] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
 
   const increaseQuantity = () => setQuantity(quantity + 1);
   const decreaseQuantity = () => quantity > 1 && setQuantity(quantity - 1);
@@ -42,6 +44,57 @@ function DoubleColor() {
       link: "double-breasted-blazer",
     },
   ];
+
+  useEffect(() => {
+        const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+        const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+        setCart(storedCart);
+        setWishlist(storedWishlist);
+      }, []);
+    
+      // Save cart to local storage whenever it changes
+      useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }, [cart]);
+    
+      // Save wishlist to local storage whenever it changes
+      useEffect(() => {
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      }, [wishlist]);
+    
+      const addToCart = () => {
+        const product = {
+          image: "/public/doublecolor.webp",
+          id: 3,
+          name: "Double Colour Blazer",
+          price: 9000,
+          quantity,
+        };
+        // Check if product is already in cart
+        const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingItem = existingCart.find((cartItem) => cartItem.id === product.id);
+  
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      existingCart.push({ ...product, quantity: 1 });
+    }
+  
+    localStorage.setItem("cart", JSON.stringify(existingCart));
+      };
+    
+      const addToWishlist = () => {
+        const product = {
+          image: "/public/doublecolor.webp",
+          id: 3,
+          name: "Double Colour Blazer",
+          price: 9000,
+        };
+        if (!wishlist.some((item) => item.id === product.id)) {
+          setWishlist([...wishlist, product]);
+        }
+      };
+  
 
   return (
     <>
@@ -107,7 +160,7 @@ function DoubleColor() {
               </div>
 
               <p className="text-lg">
-                Total: <span className="font-semibold">Rs 9000</span>
+                Total: <span className="font-semibold">Rs {9000 * quantity}</span>
               </p>
               <p className="text-green-400 font-semibold">21 In stock!</p>
 
@@ -125,10 +178,12 @@ function DoubleColor() {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <button className="bg-orange-400 text-black font-semibold py-2 rounded-md">
+              <button onClick={addToCart}
+                    className="bg-orange-400 cursor-pointer text-black font-semibold py-2 rounded-md">
                   Add to Cart
                 </button>
-                <button className="bg-gray-700 text-white font-semibold py-2 rounded-md">
+                <button onClick={addToWishlist}
+                    className="bg-gray-700 cursor-pointer text-white font-semibold py-2 rounded-md">
                   Add to Wishlist
                 </button>
               </div>
