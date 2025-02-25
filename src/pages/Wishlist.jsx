@@ -1,89 +1,58 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { removeFromWishlist } from "../redux/wishlistSlice";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaTrash } from "react-icons/fa";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 
-const Wishlist = () => {
-  const wishlist = useSelector((state) => state.wishlist.wishlist);
-  const dispatch = useDispatch();
+function Wishlist() {
+  const [wishlist, setWishlist] = useState([]);
+
+  useEffect(() => {
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    setWishlist(storedWishlist);
+  }, []);
+
+  const removeFromWishlist = (id) => {
+    const updatedWishlist = wishlist.filter((item) => item.id !== id);
+    setWishlist(updatedWishlist);
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+  };
 
   return (
-    <div className="min-h-screen text-white">
-      <header
-        className="relative w-full h-80 bg-no-repeat bg-[length:100%_100%] bg-center"
-        style={{
-          backgroundImage:
-            "url('https://img.freepik.com/premium-photo/detailed-3d-illustration-men39s-fashion-display-with-business-attire-arranged-classic-wooden-hangers-showcased-clean-white-lighting_41097-18792.jpg')",
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/10">
-          <Nav />
-          <div className="absolute mt-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-            <h2 className="text-4xl font-bold">NEWS</h2>
-            <h1 className="mt-10">
-              <Link to="/">
-                <span className="hover:text-orange-300 cursor-pointer">
-                  Home
-                </span>
-              </Link>
-              / Best Selling - Home1
-            </h1>
-          </div>
-        </div>
-      </header>
+    <div className="text-white min-h-screen">
+      <Nav />
+      <div className="container mx-auto p-10">
+        <h1 className="text-4xl font-bold text-center mb-6">Your Wishlist</h1>
 
-      <h2 className="text-white text-3xl mt-10 mb-6">Your Wishlist</h2>
-      {wishlist.length === 0 ? (
-        <p className="text-gray-400">Your wishlist is empty.</p>
-      ) : (
-        <table className="w-full border-collapse">
-          <thead>
-            <tr className="border-b border-gray-600 text-white">
-              <th className="p-4 w-1/5 text-center">Image</th>
-              <th className="p-4 w-1/5 text-left">Product Name</th>
-              <th className="p-4 w-1/5 text-center">Price</th>
-              <th className="p-4 w-1/5 text-center">Buy</th>
-              <th className="p-4 w-1/5 text-center">Remove</th>
-            </tr>
-          </thead>
-          <tbody>
+        {wishlist.length === 0 ? (
+          <p className="text-center text-lg">Your wishlist is empty.</p>
+        ) : (
+          <div className="space-y-6">
             {wishlist.map((item) => (
-              <tr key={item.id} className="border-b border-gray-600 text-white">
-                <td className="p-4">
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-20 h-24 object-cover mx-auto"
-                  />
-                </td>
-                <td className="p-4 w-1/5 text-left">{item.title}</td>
-                <td className="p-4 w-1/5 text-center font-semibold">
-                  ${item.price}
-                </td>
-                <td className="p-4 w-1/5 text-center">
-                  <Link>
-                    <button className="bg-[#b59a76] hover:bg-white hover:text-black cursor-pointer text-white px-4 py-2 rounded-lg">
-                      Shop Now
-                    </button>
-                  </Link>
-                </td>
-                <td className="p-4 w-1/5 text-center">
-                  <button onClick={() => dispatch(removeFromWishlist(item.id))}>
-                    <FaTrash className="text-white cursor-pointer text-lg hover:text-red-500" />
-                  </button>
-                </td>
-              </tr>
+              <div key={item.id} className="bg-gray-800 p-4 rounded-lg flex justify-between items-center">
+                <div>
+                  <h2 className="text-xl font-semibold">{item.name}</h2>
+                  <p className="text-gray-400">Price: Rs {item.price}</p>
+                </div>
+                <button
+                  onClick={() => removeFromWishlist(item.id)}
+                  className="bg-red-500 px-4 py-2 rounded-md font-semibold"
+                >
+                  Remove
+                </button>
+              </div>
             ))}
-          </tbody>
-        </table>
-      )}
+          </div>
+        )}
 
+        <div className="text-center mt-6">
+          <Link to="/" className="bg-orange-400 text-black px-6 py-3 rounded-md font-semibold">
+            Continue Shopping
+          </Link>
+        </div>
+      </div>
       <Footer />
     </div>
   );
-};
+}
 
 export default Wishlist;
