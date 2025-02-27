@@ -44,7 +44,7 @@ function Page2() {
             </Link>
           </div>
 
-          <img className="h-[500px]" src="public/img3.webp" />
+          <img className="h-[500px]" src="/img3.webp" />
         </div>
       </div>
 
