@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FaUser } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -8,12 +8,95 @@ function Nav() {
   const [isUserSidebarOpen, setIsUserSidebarOpen] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
 
+  // Auth states
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState(null);
+
+  const navigate = useNavigate();
+
+  // Check if user is logged in
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  // Handle Sign-Up
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    
+    console.log("Signing up...");
+  
+    try {
+      const response = await fetch("http://localhost:5000/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firstName, lastName, email, phone, password }),
+      });
+  
+      const data = await response.json();
+      console.log("Signup response:", data);
+  
+      if (response.ok) {
+        alert("Signup successful! Please sign in.");
+        setIsSignUp(false);
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Signup Error:", error);
+      alert("An error occurred. Check console.");
+    }
+  };
+  
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+  
+    console.log("Signing in...");
+  
+    try {
+      const response = await fetch("http://localhost:5000/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      const data = await response.json();
+      console.log("Signin response:", data);
+  
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        setUser(data.user);
+        setIsUserSidebarOpen(false);
+        navigate("/");
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Signin Error:", error);
+      alert("An error occurred. Check console.");
+    }
+  };
+  
+  // Handle Logout
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setUser(null);
+    navigate("/");
+  };
+
   return (
     <>
       <div className="flex items-center justify-between mt-10">
         <div className="flex ml-10 gap-3">
-          <img className='h-20 rounded-full'
-                src='/logo.webp'/>
+          <img className="h-20 rounded-full" src="/logo.webp" />
           <Link to="/">
             <h1 className="text-3xl font-bold mt-5 text-orange-200">
               Panda Suits
@@ -153,12 +236,24 @@ function Nav() {
             </svg>
           </Link>
 
-          <button
-            onClick={() => setIsUserSidebarOpen(!isUserSidebarOpen)}
-            className="p-2 bg-gray-800 cursor-pointer text-white rounded-full shadow-lg"
-          >
-            <FaUser size={24} />
-          </button>
+          {user ? (
+            <>
+              <span>Welcome, {user.firstName}</span>
+              <button
+                onClick={handleLogout}
+                className="bg-red-500 px-4 py-2 rounded"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={() => setIsUserSidebarOpen(!isUserSidebarOpen)}
+              className="p-2 bg-gray-800 text-white rounded-full shadow-lg"
+            >
+              <FaUser size={24} />
+            </button>
+          )}
         </div>
       </div>
 
@@ -180,31 +275,46 @@ function Nav() {
           {isSignUp ? (
             <>
               <h2 className="text-2xl font-bold mb-4">Create an Account</h2>
-              <form className="flex flex-col gap-4">
+              <form onSubmit={handleSignUp} className="flex flex-col gap-4">
                 <input
                   type="text"
                   placeholder="First Name"
                   className="border p-2 rounded"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  required
                 />
                 <input
                   type="text"
                   placeholder="Last Name"
                   className="border p-2 rounded"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  required
                 />
                 <input
                   type="email"
                   placeholder="Email"
                   className="border p-2 rounded"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <input
                   type="tel"
                   placeholder="Phone Number"
                   className="border p-2 rounded"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
                 />
                 <input
                   type="text"
                   placeholder="OTP Verification"
                   className="border p-2 rounded"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
                 <button className="bg-blue-600 cursor-pointer text-white py-2 rounded">
                   Verify & Sign Up
@@ -223,16 +333,22 @@ function Nav() {
               <h2 className="text-2xl cursor-pointer font-bold mb-4">
                 Sign In
               </h2>
-              <form className="flex flex-col gap-4">
+              <form onSubmit={handleSignIn} className="flex flex-col gap-4">
                 <input
+                  className="border p-2 rounded"
                   type="email"
                   placeholder="Email"
-                  className="border p-2 rounded"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <input
+                  className="border p-2 rounded"
                   type="password"
                   placeholder="Password"
-                  className="border p-2 rounded"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
                 <button className="bg-blue-600 cursor-pointer text-white py-2 rounded">
                   Sign In
