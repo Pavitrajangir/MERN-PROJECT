@@ -63,7 +63,7 @@ function Cart() {
       </header>
       <h1 className="text-4xl font-bold mt-10 mb-6">Products</h1>
 
-      <div className="flex gap-10">
+      <div className="flex ml-5 mr-5 gap-10">
         <div className="w-2/3">
           {cart.length === 0 ? (
             <p className="text-center text-lg">Your cart is empty.</p>
@@ -71,7 +71,7 @@ function Cart() {
             cart.map((item) => (
               <div
                 key={item.id}
-                className="bg-gray-900 p-5 rounded-lg flex items-center justify-between mb-6 border border-gray-700"
+                className="p-5 rounded-lg flex items-center justify-between mb-6 border border-gray-700"
               >
                 <img
                   src={item.image}

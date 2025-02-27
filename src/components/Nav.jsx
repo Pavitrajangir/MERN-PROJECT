@@ -10,9 +10,11 @@ function Nav() {
         <div className="flex ml-10 gap-5">
           {/* <img className='h-20 rounded-full' 
                       src='https://www.creativefabrica.com/wp-content/uploads/2023/09/22/Lion-King-Mascot-Logo-Graphics-79876739-1-580x387.jpg'/> */}
-          <h1 className="text-3xl font-bold mt-5 text-orange-200">
-            Roar Suits
-          </h1>
+          <Link to="/">
+            <h1 className="text-3xl font-bold mt-5 text-orange-200">
+              Roar Suits
+            </h1>
+          </Link>
         </div>
         <div className="flex items-center gap-5 text-xl font-bold font-sans text-white">
           {["Home", "Shop", "About", "Pages", "Contact"].map((item) => (
