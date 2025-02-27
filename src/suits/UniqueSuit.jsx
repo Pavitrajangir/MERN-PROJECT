@@ -17,29 +17,29 @@ function UniqueSuit() {
 
   const recommendedProducts = [
     {
-      src: "/public/image6.webp",
-      src2: "/public/image6.webp",
+      src: "/image6.webp",
+      src2: "/image6.webp",
       title: "Elegant 6 Blazer",
       title2: "Rs 6000",
       link: "elegant-suit-6",
     },
     {
-      src: "/public/image2.webp",
-      src2: "/public/image22.webp",
+      src: "/image2.webp",
+      src2: "/image22.webp",
       title: "Slim Fit Blazer",
       title2: "Rs 11000",
       link: "slim-fit-blazer",
     },
     {
-      src: "/public/redsuit.webp",
-      src2: "/public/redsuit.webp",
+      src: "/redsuit.webp",
+      src2: "/redsuit.webp",
       title: "Party Wear Blazer",
       title2: "Rs 7000",
       link: "party-wear-blazer",
     },
     {
-      src: "/public/image1.webp",
-      src2: "/public/image11.webp",
+      src: "/image1.webp",
+      src2: "/image11.webp",
       title: "Tweed Formal Blazer",
       title2: "Rs 8000",
       link: "tweed-formal-blazer",
@@ -65,7 +65,7 @@ function UniqueSuit() {
       
         const addToCart = () => {
           const product = {
-            image: "/public/image5.webp",
+            image: "/image5.webp",
             id: 10,
             name: "Unique Silk Blazer",
             price: 12000,
@@ -86,7 +86,7 @@ function UniqueSuit() {
       
         const addToWishlist = () => {
           const product = {
-            image: "/public/image5.webp",
+            image: "/image5.webp",
             id: 10,
             name: "Unique Silk Blazer",
             price: 12000,
@@ -126,7 +126,7 @@ function UniqueSuit() {
           <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="flex justify-center">
               <img
-                src="/public/image5.webp"
+                src="/image5.webp"
                 alt="Unique Silk Blazer"
                 className="w-full max-w-md rounded-lg shadow-lg"
               />

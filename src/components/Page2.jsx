@@ -19,9 +19,9 @@ function Page2() {
     <>
       <div className="h-screen text-white flex relative">
         <div className="flex gap-8 top-[30%] left-[10%] absolute">
-          <img className="h-[350px] w-[250px] " src="public/img2.webp" />
+          <img className="h-[350px] w-[250px] " src="/img2.webp" />
 
-          <img className="h-[150px] mt-51 moving-img" src="public/img4.webp" />
+          <img className="h-[150px] mt-51 moving-img" src="/img4.webp" />
 
           <div className="">
             <h1 className="text-5xl font-light uppercase pl-30">
@@ -55,7 +55,7 @@ function Page2() {
           {/* Excellence Cutting */}
           <div className="flex justify-center items-center gap-6 border-r border-b transition-all duration-700 hover:bg-[#1b1b1b] border-[#c4a47c] group group-hover:mt-5">
             <img
-              src="/public/img5.webp"
+              src="/img5.webp"
               className="h-30 transition-transform duration-700 group-hover:-translate-y-5"
             />
             <h2 className="text-5xl font-light text-justify">
@@ -66,7 +66,7 @@ function Page2() {
           {/* Quality Fabric */}
           <div className="flex justify-center items-center gap-6 border-b transition-all duration-700 hover:bg-[#1b1b1b] border-[#c4a47c] group">
             <img
-              src="/public/img6.webp"
+              src="/img6.webp"
               className="h-30 transition-transform duration-700 group-hover:-translate-y-5"
             />
             <h2 className="text-5xl font-light text-justify">
@@ -77,7 +77,7 @@ function Page2() {
           {/* Expert Tailoring */}
           <div className="flex justify-center items-center gap-6 border-r transition-all duration-700 hover:bg-[#1b1b1b] border-[#c4a47c] group">
             <img
-              src="/public/img7.webp"
+              src="/img7.webp"
               className="h-30 transition-transform duration-700 group-hover:-translate-y-5"
             />
             <h2 className="text-5xl pt-4 font-light text-justify">
@@ -88,7 +88,7 @@ function Page2() {
           {/* Fully Hand Stitched */}
           <div className="flex justify-center gap-6 items-center transition-all duration-700 hover:bg-[#1b1b1b] group">
             <img
-              src="/public/img8.webp"
+              src="/img8.webp"
               className="h-30 transition-transform duration-700 group-hover:-translate-y-5"
             />
             <h2 className="text-5xl pt-3 font-light text-justify">

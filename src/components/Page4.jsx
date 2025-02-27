@@ -7,42 +7,42 @@ const Page4 = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [
     {
-      src: "/public/image1.webp",
-      src2: "/public/image11.webp",
+      src: "/image1.webp",
+      src2: "/image11.webp",
       title: "Tweed Formal Blazer",
       title2: "Rs 8000",
       link: "/fabulous-suits/tweed-formal-blazer",
     },
     {
-      src: "/public/image2.webp",
-      src2: "/public/image22.webp",
+      src: "/image2.webp",
+      src2: "/image22.webp",
       title: "Slim Fit Blazer",
       title2: "Rs 11000",
       link: "/fabulous-suits/slim-fit-blazer",
     },
     {
-      src: "/public/image3.webp",
-      src2: "/public/image33.webp",
+      src: "/image3.webp",
+      src2: "/image33.webp",
       title: "Slim Formal Blazer",
       title2: "Rs 9000",
       link: "/fabulous-suits/slim-formal-blazer",
     },
     {
-      src: "/public/image4.webp",
-      src2: "/public/image44.webp",
+      src: "/image4.webp",
+      src2: "/image44.webp",
       title: "Double Breasted Blazer",
       title2: "Rs 10000",
       link: "/fabulous-suits/double-breasted-blazer",
     },
     {
-      src: "/public/image5.webp",
-      src2: "/public/image55.webp",
+      src: "/image5.webp",
+      src2: "/image55.webp",
       title: "Unique Silk Blazer",
       title2: "Rs 12000",
       link: "/fabulous-suits/unique-silk-blazer",
     },
     {
-      src: "/public/image6.webp",
+      src: "/image6.webp",
       title: "Elegant Suit 6",
       title2: "Rs 6000",
       link: "/fabulous-suits/elegant-suit-6",
@@ -154,7 +154,7 @@ const Page4 = () => {
           </div>
 
           <div className="h-[100%] relative group">
-            <img src="/public/img11.webp" className="w-full h-[95%]" />
+            <img src="/img11.webp" className="w-full h-[95%]" />
             <div className="absolute h-[95%] inset-0 bg-gradient-to-t from-orange-300 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
           </div>
         </div>

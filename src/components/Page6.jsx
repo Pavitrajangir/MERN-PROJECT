@@ -5,14 +5,14 @@ function Page6() {
   const blogs = [
     {
       id: 1,
-      image: "/public/img13.webp",
+      image: "/img13.webp",
       date: "Aug 2025",
       title: "Classic Suits That Fits For Your Party",
       link: "#",
     },
     {
       id: 2,
-      image: "/public/img12.webp",
+      image: "/img12.webp",
       date: "Aug 2025",
       title: "Elegant Suit Look For Your Office Meet",
       link: "#",

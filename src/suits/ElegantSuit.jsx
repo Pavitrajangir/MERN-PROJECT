@@ -17,29 +17,29 @@ function ElegantSuit() {
 
   const recommendedProducts = [
     {
-      src: "/public/redsuit.webp",
-      src2: "/public/redsuit.webp",
+      src: "/redsuit.webp",
+      src2: "/redsuit.webp",
       title: "Party wear Blazer",
       title2: "Rs 10000",
       link: "double-breasted-blazer",
     },
     {
-      src: "/public/image2.webp",
-      src2: "/public/image22.webp",
+      src: "/image2.webp",
+      src2: "/image22.webp",
       title: "Slim Fit Blazer",
       title2: "Rs 11000",
       link: "slim-fit-blazer",
     },
     {
-      src: "/public/image5.webp",
-      src2: "/public/image55.webp",
+      src: "/image5.webp",
+      src2: "/image55.webp",
       title: "Unique Silk Blazer",
       title2: "Rs 12000",
       link: "unique-silk-blazer",
     },
     {
-      src: "/public/image1.webp",
-      src2: "/public/image11.webp",
+      src: "/image1.webp",
+      src2: "/image11.webp",
       title: "Tweed Formal Blazer",
       title2: "Rs 8000",
       link: "tweed-formal-blazer",
@@ -65,7 +65,7 @@ function ElegantSuit() {
       
         const addToCart = () => {
           const product = {
-            image: "/public/image6.webp",
+            image: "/image6.webp",
             id: 5,
             name: "Elegant 6 Blazer",
             price: 6000,
@@ -86,7 +86,7 @@ function ElegantSuit() {
       
         const addToWishlist = () => {
           const product = {
-            image: "/public/image6.webp",
+            image: "/image6.webp",
             id: 5,
             name: "Elegant 6 Blazer",
             price: 6000,
@@ -126,7 +126,7 @@ function ElegantSuit() {
           <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="flex justify-center">
               <img
-                src="/public/image6.webp"
+                src="/image6.webp"
                 alt="Elegant 6 Blazer"
                 className="w-full max-w-md rounded-lg shadow-lg"
               />

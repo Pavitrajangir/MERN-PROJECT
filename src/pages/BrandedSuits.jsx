@@ -7,29 +7,29 @@ import Footer from "../components/Footer";
 function BrandedSuits() {
   const images = [
     {
-      src: "/public/image1.webp",
-      src2: "/public/image11.webp",
+      src: "/image1.webp",
+      src2: "/image11.webp",
       title: "Tweed Formal Blazer",
       title2: "Rs 8000",
       link: "/fabulous-suits/tweed-formal-blazer",
     },
     {
-      src: "/public/image2.webp",
-      src2: "/public/image22.webp",
+      src: "/image2.webp",
+      src2: "/image22.webp",
       title: "Slim Fit Blazer",
       title2: "Rs 11000",
       link: "/fabulous-suits/slim-fit-blazer",
     },
     {
-      src: "/public/doublecolor.webp",
-      src2: "/public/doublecolor.webp",
+      src: "/doublecolor.webp",
+      src2: "/doublecolor.webp",
       title: "Double Color Solid Blazer",
       title2: "Rs 9000",
       link: "double-color-blazer",
     },
     {
-      src: "/public/cotton.webp",
-      src2: "/public/cotton.webp",
+      src: "/cotton.webp",
+      src2: "/cotton.webp",
       title: "Cotton Twill Blazer",
       title2: "Rs 12000",
       link: "/branded-suits/cotton-twill-blazer",

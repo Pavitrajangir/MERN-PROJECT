@@ -27,14 +27,14 @@ function Page3() {
           </div>
 
           <div className="h-full relative group">
-            <img src="/public/img9.webp" className="w-full h-full" />
+            <img src="/img9.webp" className="w-full h-full" />
             <div className="absolute inset-0 bg-gradient-to-t from-orange-300 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
           </div>
         </div>
 
         <div className="min-h-[80%] mt-30 w-[80%] grid grid-cols-2 items-center ml-40 gap-15">
           <div className="h-full relative group">
-            <img src="/public/img10.webp" className="w-full h-full" />
+            <img src="/img10.webp" className="w-full h-full" />
             <div className="absolute inset-0 bg-gradient-to-t from-orange-300 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
           </div>
           <div className="text-white mt-6">

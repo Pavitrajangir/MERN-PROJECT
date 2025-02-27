@@ -16,29 +16,29 @@ function DoubleColor() {
 
   const recommendedProducts = [
     {
-      src: "/public/image6.webp",
-      src2: "/public/image6.webp",
+      src: "/image6.webp",
+      src2: "/image6.webp",
       title: "Elegant 6 Blazer",
       title2: "Rs 6000",
       link: "elegant-suit-6",
     },
     {
-      src: "/public/image2.webp",
-      src2: "/public/image22.webp",
+      src: "/image2.webp",
+      src2: "/image22.webp",
       title: "Slim Fit Blazer",
       title2: "Rs 11000",
       link: "slim-fit-blazer",
     },
     {
-      src: "/public/redsuit.webp",
-      src2: "/public/redsuit.webp",
+      src: "/redsuit.webp",
+      src2: "/redsuit.webp",
       title: "Party Wear Blazer",
       title2: "Rs 7000",
       link: "party-wear-blazer",
     },
     {
-      src: "/public/image4.webp",
-      src2: "/public/image44.webp",
+      src: "/image4.webp",
+      src2: "/image44.webp",
       title: "Double Breasted Blazer",
       title2: "Rs 10000",
       link: "double-breasted-blazer",
@@ -64,7 +64,7 @@ function DoubleColor() {
     
       const addToCart = () => {
         const product = {
-          image: "/public/doublecolor.webp",
+          image: "/doublecolor.webp",
           id: 3,
           name: "Double Colour Blazer",
           price: 9000,
@@ -85,7 +85,7 @@ function DoubleColor() {
     
       const addToWishlist = () => {
         const product = {
-          image: "/public/doublecolor.webp",
+          image: "/doublecolor.webp",
           id: 3,
           name: "Double Colour Blazer",
           price: 9000,
@@ -126,7 +126,7 @@ function DoubleColor() {
           <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="flex justify-center">
               <img
-                src="/public/doublecolor.webp"
+                src="/doublecolor.webp"
                 alt="Double Colour Blazer"
                 className="w-full max-w-md rounded-lg shadow-lg"
               />

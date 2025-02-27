@@ -17,29 +17,29 @@ function TwidSuit() {
 
   const recommendedProducts = [
     {
-      src: "/public/image6.webp",
-      src2: "/public/image6.webp",
+      src: "/image6.webp",
+      src2: "/image6.webp",
       title: "Elegant 6 Blazer",
       title2: "Rs 6000",
       link: "elegant-suit-6",
     },
     {
-      src: "/public/image2.webp",
-      src2: "/public/image22.webp",
+      src: "/image2.webp",
+      src2: "/image22.webp",
       title: "Slim Fit Blazer",
       title2: "Rs 11000",
       link: "slim-fit-blazer",
     },
     {
-      src: "/public/redsuit.webp",
-      src2: "/public/redsuit.webp",
+      src: "/redsuit.webp",
+      src2: "/redsuit.webp",
       title: "Party Wear Blazer",
       title2: "Rs 7000",
       link: "party-wear-blazer",
     },
     {
-      src: "/public/image4.webp",
-      src2: "/public/image44.webp",
+      src: "/image4.webp",
+      src2: "/image44.webp",
       title: "Double Breasted Blazer",
       title2: "Rs 10000",
       link: "double-breasted-blazer",
@@ -65,7 +65,7 @@ function TwidSuit() {
       
         const addToCart = () => {
           const product = {
-            image: "/public/image1.webp",
+            image: "/image1.webp",
             id: 9,
             name: "Tweed Formal Blazer",
             price: 8000,
@@ -86,7 +86,7 @@ function TwidSuit() {
       
         const addToWishlist = () => {
           const product = {
-            image: "/public/image1.webp",
+            image: "/image1.webp",
             id: 9,
             name: "Tweed Formal Blazer",
             price: 8000,
@@ -126,7 +126,7 @@ function TwidSuit() {
           <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="flex justify-center">
               <img
-                src="/public/image1.webp"
+                src="/image1.webp"
                 alt="Tweed Formal Blazer"
                 className="w-full max-w-md rounded-lg shadow-lg"
               />
