@@ -2,19 +2,19 @@ import React, { useState } from "react";
 
 const images = [
   {
-    image: "/my photo.jpg",
+    image: "/me.jpg",
     name: "Pavitra Jangir",
     position: "CEO",
     text: "Pure in softness now, but always present. The painful path leads to great changes at the doorstep. The balanced approach brings comfort and progress.",
   },
   {
-    image: "/user2.jpg",
+    image: "/shivansh.jpg",
     name: "Shivansh",
     position: "Manager",
     text: "Success is built on patience and persistence. Every challenge is a stepping stone to greatness.",
   },
   {
-    image: "/user3.jpg",
+    image: "/shailu.jpg",
     name: "Shailendra Sharma",
     position: "Developer",
     text: "Great leadership is about inspiring change and adapting to the needs of the future.",

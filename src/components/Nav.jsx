@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
+import { FaUser } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaHeart, FaShoppingCart } from "react-icons/fa";
 
 function Nav() {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isUserSidebarOpen, setIsUserSidebarOpen] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
 
   return (
     <>
       <div className="flex items-center justify-between mt-10">
-        <div className="flex ml-10 gap-5">
-          {/* <img className='h-20 rounded-full' 
-                      src='https://www.creativefabrica.com/wp-content/uploads/2023/09/22/Lion-King-Mascot-Logo-Graphics-79876739-1-580x387.jpg'/> */}
+        <div className="flex ml-10 gap-3">
+          <img className='h-20 rounded-full' 
+                      src='/logo.webp'/>
           <Link to="/">
             <h1 className="text-3xl font-bold mt-5 text-orange-200">
-              Roar Suits
+              Panda Suits
             </h1>
           </Link>
         </div>
@@ -117,7 +122,7 @@ function Nav() {
         <div className="flex items-center gap-14 mr-20 text-white">
           <Link to="/cart">
             <svg
-              className="h-10 cursor-pointer transition-colors duration-300 hover:fill-orange-200"
+              className="h-8 cursor-pointer transition-colors duration-300 hover:fill-orange-200"
               version="1.1"
               id="Layer_1"
               xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +139,7 @@ function Nav() {
 
           <Link to="/wishlist">
             <svg
-              className="h-10 cursor-pointer transition-colors duration-300 hover:fill-orange-200"
+              className="h-8 cursor-pointer transition-colors duration-300 hover:fill-orange-200"
               version="1.1"
               id="Layer_1"
               xmlns="http://www.w3.org/2000/svg"
@@ -148,8 +153,103 @@ function Nav() {
               </g>
             </svg>
           </Link>
+
+          <button
+            onClick={() => setIsUserSidebarOpen(!isUserSidebarOpen)}
+            className="p-2 bg-gray-800 cursor-pointer text-white rounded-full shadow-lg"
+          >
+            <FaUser size={24} />
+          </button>
         </div>
       </div>
+
+      {isUserSidebarOpen && (
+        <motion.div
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          exit={{ x: "100%" }}
+          transition={{ type: "tween", duration: 0.3 }}
+          className="fixed z-50 top-0 right-0 h-full w-80 bg-white shadow-xl p-6"
+        >
+          <button
+            onClick={() => setIsUserSidebarOpen(false)}
+            className="absolute top-4 right-4 text-gray-600 text-xl"
+          >
+            ✕
+          </button>
+
+          {isSignUp ? (
+            <>
+              <h2 className="text-2xl font-bold mb-4">Create an Account</h2>
+              <form className="flex flex-col gap-4">
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  className="border p-2 rounded"
+                />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  className="border p-2 rounded"
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="border p-2 rounded"
+                />
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  className="border p-2 rounded"
+                />
+                <input
+                  type="text"
+                  placeholder="OTP Verification"
+                  className="border p-2 rounded"
+                />
+                <button className="bg-blue-600 cursor-pointer text-white py-2 rounded">
+                  Verify & Sign Up
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsSignUp(false)}
+                  className="text-blue-600 cursor-pointer"
+                >
+                  Already have an account? Sign In
+                </button>
+              </form>
+            </>
+          ) : (
+            <>
+              <h2 className="text-2xl cursor-pointer font-bold mb-4">
+                Sign In
+              </h2>
+              <form className="flex flex-col gap-4">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="border p-2 rounded"
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  className="border p-2 rounded"
+                />
+                <button className="bg-blue-600 cursor-pointer text-white py-2 rounded">
+                  Sign In
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsSignUp(true)}
+                  className="text-blue-600 cursor-pointer"
+                >
+                  Create an Account
+                </button>
+              </form>
+            </>
+          )}
+        </motion.div>
+      )}
     </>
   );
 }

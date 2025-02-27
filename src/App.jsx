@@ -56,6 +56,7 @@ function App() {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
+          
 
           <Route
             path="/fabulous-suits/party-wear-blazer"
