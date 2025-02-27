@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { FaUser } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { FaHeart, FaShoppingCart } from "react-icons/fa";
 
 function Nav() {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -13,8 +12,8 @@ function Nav() {
     <>
       <div className="flex items-center justify-between mt-10">
         <div className="flex ml-10 gap-3">
-          <img className='h-20 rounded-full' 
-                      src='/logo.webp'/>
+          <img className='h-20 rounded-full'
+                src='/logo.webp'/>
           <Link to="/">
             <h1 className="text-3xl font-bold mt-5 text-orange-200">
               Panda Suits
@@ -173,7 +172,7 @@ function Nav() {
         >
           <button
             onClick={() => setIsUserSidebarOpen(false)}
-            className="absolute top-4 right-4 text-gray-600 text-xl"
+            className="absolute cursor-pointer top-4 right-4 text-gray-600 text-xl"
           >
             ✕
           </button>
